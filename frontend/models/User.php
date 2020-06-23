@@ -9,6 +9,17 @@ use yii\web\IdentityInterface;
 
 class User extends ActiveRecord implements IdentityInterface
 {
+
+    public static function checkUser($personal_id)
+    {
+        return self::find()->where(['personal_id' => $personal_id])->one();
+    }
+
+    public function validatePass($password)
+    {
+        return \Yii::$app->security->validatePassword($password, $this->password_hash);
+    }
+
     public static function findIdentity($id)
     {
         return static::findOne($id);
