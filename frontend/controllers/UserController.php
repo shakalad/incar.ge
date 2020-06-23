@@ -35,4 +35,10 @@ class UserController extends Controller
 
         return $this->render('login', compact('model'));
     }
+
+    public function actionLogout()
+    {
+        \Yii::$app->user->logout();
+        return $this->goHome();
+    }
 }
