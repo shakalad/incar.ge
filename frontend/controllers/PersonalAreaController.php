@@ -4,6 +4,7 @@
 namespace frontend\controllers;
 
 
+use frontend\models\Contract;
 use frontend\models\forms\ContractForm;
 use yii\web\Controller;
 
@@ -17,8 +18,11 @@ class PersonalAreaController extends Controller
     public function actionProfile()
     {
         $this->layout = 'personal-area';
+        $contractList = Contract::find()
+            ->where(['contract_owner_id' => \Yii::$app->user->identity->personal_id])
+            ->all();
 
-        return $this->render('profile');
+        return $this->render('profile', compact('contractList'));
     }
 
     public function actionContracts()
