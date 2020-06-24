@@ -64,7 +64,24 @@ AppAsset::register($this);
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= Alert::widget() ?>
-        <?= $content ?>
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="personal-area__menu" style="padding: 30px; background-color: #ffc000;">
+                    <?php
+
+                    echo Html::a('Profile', ['personal-area/profile'], ['class' => 'btn btn-default btn-block']);
+                    echo "<br>";
+                    echo Html::a('Contracts', ['personal-area/contracts'], ['class' => 'btn btn-default btn-block']);
+                    echo "<br>";
+                    echo Html::a('Discounts', ['personal-area/discounts'], ['class' => 'btn btn-default btn-block']);
+
+                    ?>
+                </div>
+            </div>
+            <div class="col-lg-offset-1 col-lg-6">
+                <?= $content ?>
+            </div>
+        </div>
     </div>
 </div>
 

@@ -13,7 +13,7 @@ class m200623_151139_create_contract_table extends Migration
     public function safeUp()
     {
         $this->createTable('{{%contract}}', [
-            'user_personal_id' => $this->string(),
+            'contract_owner_id' => $this->string(),
             'address' => $this->string(),
             'place_of_work' => $this->string(),
             'car_brand' => $this->string(),
@@ -21,8 +21,8 @@ class m200623_151139_create_contract_table extends Migration
             'color' => $this->string(),
             'car_state_number' => $this->string()->unique(),
             'steering_wheel' => $this->string(),
-            'license' => $this->boolean(),
-            'license_number' => $this->string(),
+            'licence' => $this->boolean(),
+            'licence_number' => $this->string(),
             'contract_start' => $this->timestamp(),
             'contract_expire' => $this->string()
         ]);
