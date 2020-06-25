@@ -31,7 +31,7 @@ class PersonalAreaController extends Controller
         $model = new ContractForm();
 
         if ($model->load(\Yii::$app->request->post()) && $model->save()) {
-            \Yii::$app->session->setFlash('success', 'Contract Added!');
+            \Yii::$app->session->setFlash('success', 'კონტრაქტი დამატებულია!');
         }
 
         return $this->render('contracts', compact('model'));

@@ -36,17 +36,17 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'მთავარი', 'url' => ['/user/index']],
     ];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Login', 'url' => ['/user/login']];
-        $menuItems[] = ['label' => 'Reg', 'url' => ['/user/sign-up']];
+        $menuItems[] = ['label' => 'შესვლა', 'url' => ['/user/login']];
+        $menuItems[] = ['label' => 'რეგისტრაცია', 'url' => ['/user/sign-up']];
     } else {
-        $menuItems[] = ['label' => 'Personal Area', 'url' => ['/personal-area/profile']];
+        $menuItems[] = ['label' => 'პირადი კაბინეტი', 'url' => ['/personal-area/profile']];
         $menuItems[] = '<li>'
             . Html::beginForm(['/user/logout'], 'post')
             . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->name . ')',
+                'გამოსვლა (' . Yii::$app->user->identity->name . ')',
                 ['class' => 'btn btn-link logout']
             )
             . Html::endForm()
@@ -66,19 +66,20 @@ AppAsset::register($this);
         <?= Alert::widget() ?>
         <div class="row">
             <div class="col-lg-3">
+                <h3><br></h3>
                 <div class="personal-area__menu" style="padding: 30px; background-color: #ffc000;">
                     <?php
 
-                    echo Html::a('Profile', ['personal-area/profile'], ['class' => 'btn btn-default btn-block']);
+                    echo Html::a('პროფილი', ['personal-area/profile'], ['class' => 'btn btn-default btn-block']);
                     echo "<br>";
-                    echo Html::a('Contracts', ['personal-area/contracts'], ['class' => 'btn btn-default btn-block']);
+                    echo Html::a('ხელშეკრულება', ['personal-area/contracts'], ['class' => 'btn btn-default btn-block']);
                     echo "<br>";
-                    echo Html::a('Discounts', ['personal-area/discounts'], ['class' => 'btn btn-default btn-block']);
+                    echo Html::a('ფასდაკლებები', ['personal-area/discounts'], ['class' => 'btn btn-default btn-block']);
 
                     ?>
                 </div>
             </div>
-            <div class="col-lg-offset-1 col-lg-6">
+            <div class="col-lg-8">
                 <?= $content ?>
             </div>
         </div>

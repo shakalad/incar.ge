@@ -36,17 +36,17 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'მთავარი', 'url' => ['/user/index']],
     ];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Login', 'url' => ['/user/login']];
-        $menuItems[] = ['label' => 'Reg', 'url' => ['/user/sign-up']];
+        $menuItems[] = ['label' => 'შესვლა', 'url' => ['/user/login']];
+        $menuItems[] = ['label' => 'რეგისტრაცია', 'url' => ['/user/sign-up']];
     } else {
-        $menuItems[] = ['label' => 'Personal Area', 'url' => ['/personal-area/profile']];
+        $menuItems[] = ['label' => 'პირადი კაბინეტი', 'url' => ['/personal-area/profile']];
         $menuItems[] = '<li>'
             . Html::beginForm(['/user/logout'], 'post')
             . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->name . ')',
+                'გამოსვლა (' . Yii::$app->user->identity->name . ')',
                 ['class' => 'btn btn-link logout']
             )
             . Html::endForm()

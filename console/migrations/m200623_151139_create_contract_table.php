@@ -21,7 +21,7 @@ class m200623_151139_create_contract_table extends Migration
             'color' => $this->string(),
             'car_state_number' => $this->string()->unique(),
             'steering_wheel' => $this->string(),
-            'licence' => $this->boolean(),
+            'licence' => $this->string(),
             'licence_number' => $this->string(),
             'contract_start' => $this->timestamp(),
             'contract_expire' => $this->string()

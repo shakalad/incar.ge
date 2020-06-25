@@ -22,6 +22,14 @@ class LogInForm extends Model
         ];
     }
 
+    public function attributeLabels()
+    {
+        return [
+            'personal_id' => 'პირადი ნომერი',
+            'password' => 'პაროლი'
+        ];
+    }
+
     public function validatePass($att)
     {
 

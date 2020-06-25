@@ -35,7 +35,22 @@ class ContractForm extends Model
                'licence_number',
                ],
                'required'],
+            ['car_state_number', 'unique', 'targetClass' => Contract::class],
+        ];
+    }
 
+    public function attributeLabels()
+    {
+        return [
+            'address' => 'მისამართი',
+            'place_of_work' => 'საქმიანობის ადგილი',
+            'car_brand' => 'ავტომობილის მარკა/მოდელი',
+            'year_of_issue' => 'გამოშვების წელი',
+            'color' => 'ფერი',
+            'car_state_number' => 'სახელმწიფო ნომერი',
+            'steering_wheel' => 'საჭე',
+            'licence' => 'ლიცენზიის ფლობა',
+            'licence_number' => 'ლიცენზიის ნომერი'
         ];
     }
 
@@ -55,6 +70,9 @@ class ContractForm extends Model
             $contract->steering_wheel = $this->steering_wheel;
             $contract->licence = $this->licence;
             $contract->licence_number = $this->licence_number;
+//            $newDate = "SELECT DATEADD(month, 6, '') AS DateAdd";
+//            $contract->contract_expire = \Yii::$app->db->createCommand()
+
             $contract->contract_expire = (time() + 86400 * 180);
 
             return $contract->save();

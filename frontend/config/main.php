@@ -10,6 +10,10 @@ return [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+//    'layout' => 'personal-area',
+    'defaultRoute' => 'user',
+    'language' => 'ka',
+    'name' => 'Incar.ge',
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
         'request' => [

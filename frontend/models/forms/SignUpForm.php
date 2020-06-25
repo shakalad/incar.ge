@@ -25,6 +25,17 @@ class SignUpForm extends Model
         ];
     }
 
+    public function attributeLabels()
+    {
+        return [
+            'name' => 'სახელი',
+            'surname' => 'გვარი',
+            'personal_id' => 'პირადი ნომერი',
+            'phone_number' => 'ტელ. ნომერი',
+            'password' => 'პაროლი',
+        ];
+    }
+
     public function save()
     {
         if ($this->validate()) {
