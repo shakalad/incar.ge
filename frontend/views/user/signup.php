@@ -19,7 +19,7 @@ use yii\helpers\Html;
         'template' => "<div class=\"form-group row\">
                                    {label}
                                 <div class=\"col-sm-8\">
-                                  {input}
+                                  {input}{error}
                                 </div>
                               </div>",
         'labelOptions' => ['class' => 'col-sm-4 col-form-label'],
@@ -32,7 +32,10 @@ use yii\helpers\Html;
                 echo $form->field($model, 'name');
                 echo $form->field($model, 'surname');
                 echo $form->field($model, 'personal_id')->input('text', ['maxlength' => 11]);
-                echo $form->field($model, 'phone_number');
+                echo $form->field($model, 'phone_number')
+                    ->widget(\yii\widgets\MaskedInput::class, [
+                        'mask' => '599 99-99-99'
+                    ]);
                 echo $form->field($model, 'email');
                 echo $form->field($model, 'password')->passwordInput();
 

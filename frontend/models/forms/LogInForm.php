@@ -35,7 +35,7 @@ class LogInForm extends Model
 
         $user = User::checkUser($this->personal_id);
         if (!$user || !$user->validatePass($this->password)) {
-            $this->addError($att, 'Incorrect Personal Id or Password');
+            $this->addError($att, 'პირადი ნომერი ან პაროლი არასშორეა');
         }
     }
 

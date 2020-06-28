@@ -32,11 +32,18 @@ class ContractForm extends Model
                [
                'address', 'place_of_work', 'car_brand', 'year_of_issue',
                'color', 'car_state_number', 'steering_wheel', 'licence',
-               'licence_number',
-               ],
-               'required'],
+              ], 'required'],
+            ['licence_number', 'string'],
+            ['car_state_number', 'checkCorrectCarNumber'],
             ['car_state_number', 'unique', 'targetClass' => Contract::class],
         ];
+    }
+
+    public function checkCorrectCarNumber($att)
+    {
+        if (strpos($this->car_state_number, '_')) {
+            $this->addError($att, 'საჭიროა სწორად შევსება');
+        }
     }
 
     public function attributeLabels()
@@ -46,7 +53,7 @@ class ContractForm extends Model
             'place_of_work' => 'საქმიანობის ადგილი',
             'car_brand' => 'ავტომობილის მარკა/მოდელი',
             'year_of_issue' => 'გამოშვების წელი',
-            'color' => 'ფერი',
+            'color' => 'ავტომობილის ფერი',
             'car_state_number' => 'სახელმწიფო ნომერი',
             'steering_wheel' => 'საჭე',
             'licence' => 'ლიცენზიის ფლობა',
@@ -73,10 +80,19 @@ class ContractForm extends Model
 //            $newDate = "SELECT DATEADD(month, 6, '') AS DateAdd";
 //            $contract->contract_expire = \Yii::$app->db->createCommand()
 
-            $contract->contract_expire = (time() + 86400 * 180);
+            $contract->contract_expire = date("Y-m-d H:i:s", strtotime("+6 month"));
 
             return $contract->save();
         }
+    }
+
+    public function getYearsList()
+    {
+        $currentYear = date('Y');
+        $yearFrom = 1990;
+        $yearsRange = range($yearFrom, $currentYear);
+
+        return array_combine($yearsRange, $yearsRange);
     }
 
 

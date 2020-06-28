@@ -46,6 +46,8 @@ return [
             'showScriptName' => false,
             'enableStrictParsing' => false,
             'rules' => [
+                '' => 'user/index',
+                '<_a:login|logout|sign-up>' => 'user/<_a>'
             ],
         ],
     ],

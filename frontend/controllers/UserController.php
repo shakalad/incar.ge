@@ -20,9 +20,10 @@ class UserController extends Controller
 
         $model = new SignUpForm();
 
-        if ($model->load(\Yii::$app->request->post()) && $model->save()) {
-            \Yii::$app->session->setFlash('warning', 'You have been registred!');
-            return $this->goHome();
+        if ($model->load(\Yii::$app->request->post()) && $user = $model->save()) {
+            \Yii::$app->session->setFlash('success', 'თქვენ წარმატებით დარეგისტრირდიტ!!');
+            \Yii::$app->user->login($user);
+            return \Yii::$app->controller->redirect(['personal-area/contracts']);
         }
 
         return $this->render('signup', compact('model'));
@@ -35,7 +36,7 @@ class UserController extends Controller
 
         if ($model->load(\Yii::$app->request->post()) && $user = $model->login()) {
             \Yii::$app->user->login($user);
-            return $this->goHome();
+            return \Yii::$app->controller->redirect(['personal-area/contracts']);
         }
 
         return $this->render('login', compact('model'));

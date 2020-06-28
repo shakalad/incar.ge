@@ -24,7 +24,8 @@ class m200623_151139_create_contract_table extends Migration
             'licence' => $this->string(),
             'licence_number' => $this->string(),
             'contract_start' => $this->timestamp(),
-            'contract_expire' => $this->string()
+            'contract_expire' => $this->string(),
+            'contract_status' => $this->string()->defaultValue(0)
         ]);
     }
 

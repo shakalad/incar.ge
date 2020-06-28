@@ -18,14 +18,22 @@ class PersonalAreaController extends Controller
     public function actionProfile()
     {
         $this->layout = 'personal-area';
+
+        return $this->render('profile');
+    }
+
+    public function actionContracts()
+    {
+
+        $this->layout = 'personal-area';
         $contractList = Contract::find()
             ->where(['contract_owner_id' => \Yii::$app->user->identity->personal_id])
             ->all();
 
-        return $this->render('profile', compact('contractList'));
+        return $this->render('contracts', compact('contractList'));
     }
 
-    public function actionContracts()
+    public function actionCreateContract()
     {
         $this->layout = 'personal-area';
         $model = new ContractForm();
@@ -34,7 +42,7 @@ class PersonalAreaController extends Controller
             \Yii::$app->session->setFlash('success', 'კონტრაქტი დამატებულია!');
         }
 
-        return $this->render('contracts', compact('model'));
+        return $this->render('create-contract', compact('model'));
     }
 
     public function actionDiscounts()

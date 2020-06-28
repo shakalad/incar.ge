@@ -35,9 +35,9 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
-    $menuItems = [
-        ['label' => 'მთავარი', 'url' => ['/user/index']],
-    ];
+//    $menuItems = [
+//        ['label' => 'მთავარი', 'url' => ['/user/index']],
+//    ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'შესვლა', 'url' => ['/user/login']];
         $menuItems[] = ['label' => 'რეგისტრაცია', 'url' => ['/user/sign-up']];

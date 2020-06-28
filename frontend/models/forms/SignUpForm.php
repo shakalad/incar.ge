@@ -19,6 +19,9 @@ class SignUpForm extends Model
     {
         return [
             [['name', 'surname', 'personal_id', 'phone_number', 'email', 'password'], 'required'],
+            ['phone_number', 'string', 'length' => 12],
+            ['personal_id', 'string', 'length' => 11],
+            ['email', 'email'],
             [['personal_id'], 'unique', 'targetClass' => User::class],
             [['phone_number'], 'unique', 'targetClass' => User::class],
             [['email'], 'unique', 'targetClass' => User::class],
@@ -49,7 +52,7 @@ class SignUpForm extends Model
             $user->auth_key = \Yii::$app->security->generateRandomString();
 
             if ($user->save()) {
-                return true;
+                return $user;
             }
         }
     }

@@ -19,7 +19,7 @@ use yii\helpers\Html;
         'template' => "<div class=\"form-group row\">
                                    {label}
                                 <div class=\"col-sm-8\">
-                                  {input}
+                                  {input}{error}
                                 </div>
                               </div>",
         'labelOptions' => ['class' => 'col-sm-4 col-form-label'],
