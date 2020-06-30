@@ -44,11 +44,11 @@ echo $form->field($model, 'car_brand')
     ]);
 
 echo $form->field($model, 'year_of_issue')
-    ->dropDownList($model->getYearsList());
+    ->dropDownList($model->getYearsList(), ['options' => ['2015' => ['Selected' => true]]]);
 
 echo $form->field($model, 'color')
     ->dropDownList([
-            'შავე' => 'შავე', 'თეთრი' => 'თეთრი', 'წითელი' => 'წითელი', 'ლურჯი' => 'ლურჯი',
+            'თეთრი' => 'თეთრი', 'შავე' => 'შავე', 'წითელი' => 'წითელი', 'ლურჯი' => 'ლურჯი',
             'ცისფერი' => 'ცისფერი', 'ვერცხლისფერი' => 'ვერცხლისფერი', 'რუხი' => 'რუხი',
             'ყავისფერი' => 'ყავისფერი', 'ყვითელი' => 'ყვითელი', 'მწვანე' => 'მწვანე',
     ]);

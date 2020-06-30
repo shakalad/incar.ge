@@ -1,4 +1,7 @@
 <?php
+
+use yii\filters\AccessControl;
+
 $params = array_merge(
     require __DIR__ . '/../../common/config/params.php',
     require __DIR__ . '/../../common/config/params-local.php',
@@ -13,7 +16,7 @@ return [
 //    'layout' => 'personal-area',
     'defaultRoute' => 'user',
     'language' => 'ka',
-    'name' => 'Incar.ge',
+    'name' => 'Incar',
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
         'request' => [

@@ -77,9 +77,6 @@ class ContractForm extends Model
             $contract->steering_wheel = $this->steering_wheel;
             $contract->licence = $this->licence;
             $contract->licence_number = $this->licence_number;
-//            $newDate = "SELECT DATEADD(month, 6, '') AS DateAdd";
-//            $contract->contract_expire = \Yii::$app->db->createCommand()
-
             $contract->contract_expire = date("Y-m-d H:i:s", strtotime("+6 month"));
 
             return $contract->save();

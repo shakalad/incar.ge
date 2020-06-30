@@ -1,6 +1,3 @@
-<?php
-
-?>
 
 <div class="row">
     <?php if ($contractList != null):?>
