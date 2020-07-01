@@ -49,6 +49,21 @@ class PersonalAreaController extends Controller
         return $this->render('create-contract', compact('model'));
     }
 
+    public function actionUpdateProfile()
+    {
+        $this->layout = 'personal-area';
+        $model = User::find()
+            ->where(['personal_id' => \Yii::$app->user->identity->personal_id])
+            ->one();
+
+        if ($model->load(\Yii::$app->request->post()) && $model->updateProfile()) {
+            \Yii::$app->session->setFlash('success', 'თქვენ წარმატებიტ ');
+        }
+
+        return $this->render('update', compact('model'));
+
+    }
+
     public function actionDiscounts()
     {
         $this->layout = 'personal-area';

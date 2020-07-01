@@ -10,6 +10,34 @@ use yii\web\IdentityInterface;
 class User extends ActiveRecord implements IdentityInterface
 {
 
+    public function rules()
+    {
+        return [
+            [['name', 'surname', 'phone_number', 'email'], 'string'],
+            ['phone_number', 'string', 'length' => 12],
+            ['email', 'email'],
+            ['phone_number', 'checkCorrect'],
+            [['phone_number'], 'unique', 'targetClass' => User::class],
+            [['email'], 'unique', 'targetClass' => User::class]
+        ];
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'name' => 'სახელი',
+            'surname' => 'გვარი',
+            'phone_number' => 'ტელ. ნომერი',
+        ];
+    }
+
+    public function checkCorrect($att)
+    {
+        if (strpos($this->phone_number, '_')) {
+            $this->addError($att, 'საჭიროა სწორად შევსება');
+        }
+    }
+
     public static function checkUser($personal_id)
     {
         return self::find()->where(['personal_id' => $personal_id])->one();
@@ -59,5 +87,20 @@ class User extends ActiveRecord implements IdentityInterface
     public function validateAuthKey($authKey)
     {
         return $this->getAuthKey() === $authKey;
+    }
+
+    public function updateProfile()
+    {
+        if ($this->validate()) {
+            $user = User::checkUser($this->personal_id);
+            $user->name = $this->name;
+            $user->surname = $this->surname;
+            $user->phone_number = $this->phone_number;
+            $user->email = $this->email;
+
+            if ($user->save()) {
+                return $user;
+            }
+        }
     }
 }

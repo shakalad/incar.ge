@@ -28,7 +28,7 @@ use yii\helpers\Html;
 ?>
     <div class="row">
         <div class="col-lg-12">
-            <?
+            <?php
                 echo $form->field($model, 'name');
                 echo $form->field($model, 'surname');
                 echo $form->field($model, 'personal_id')->input('text', ['maxlength' => 11]);
