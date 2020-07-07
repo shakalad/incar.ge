@@ -1,9 +1,9 @@
 <?php
 
-namespace frontend\models\forms;
+namespace frontend\forms;
 
 
-use frontend\models\User;
+use frontend\entities\User;
 use yii\base\Model;
 
 class SignUpForm extends Model

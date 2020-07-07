@@ -1,11 +1,12 @@
 <?php
 
 
-namespace frontend\models\forms;
+namespace frontend\forms;
 
 
-use frontend\models\Contract;
-use frontend\models\User;
+
+use frontend\entities\Contract;
+use frontend\entities\User;
 use yii\base\Model;
 
 

@@ -4,8 +4,8 @@
 namespace frontend\controllers;
 
 
-use frontend\models\forms\LogInForm;
-use frontend\models\forms\SignUpForm;
+use frontend\forms\LogInForm;
+use frontend\forms\SignUpForm;
 use yii\web\Controller;
 
 class UserController extends Controller

@@ -1,14 +1,12 @@
 <?php
 
 
-namespace frontend\models;
+namespace frontend\entities;
 
 
 use yii\db\ActiveRecord;
 
 class Contract extends ActiveRecord
 {
-
-
 
 }

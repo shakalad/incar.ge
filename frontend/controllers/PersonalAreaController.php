@@ -4,9 +4,9 @@
 namespace frontend\controllers;
 
 
-use frontend\models\Contract;
-use frontend\models\forms\ContractForm;
-use frontend\models\User;
+use frontend\entities\Contract;
+use frontend\entities\User;
+use frontend\forms\ContractForm;
 use yii\web\Controller;
 
 class PersonalAreaController extends Controller
@@ -40,13 +40,13 @@ class PersonalAreaController extends Controller
     public function actionCreateContract()
     {
         $this->layout = 'personal-area';
-        $model = new ContractForm();
+        $contract = new ContractForm();
 
-        if ($model->load(\Yii::$app->request->post()) && $model->save()) {
+        if ($contract->load(\Yii::$app->request->post()) && $contract->save()) {
             \Yii::$app->session->setFlash('success', 'კონტრაქტი დამატებულია!');
         }
 
-        return $this->render('create-contract', compact('model'));
+        return $this->render('create-contract', compact('contract'));
     }
 
     public function actionUpdateProfile()

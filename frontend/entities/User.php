@@ -1,7 +1,7 @@
 <?php
 
 
-namespace frontend\models;
+namespace frontend\entities;
 
 
 use yii\db\ActiveRecord;
